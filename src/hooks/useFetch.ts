@@ -20,7 +20,7 @@ export const useFetch = (url: string) => {
     data: [],
   };
 
-  const [state, dispatch] = useReducer((state: State, action: Action) => {
+  const [state, dispatch] = useReducer((fetchState: State, action: Action) => {
     switch (action.type) {
       case 'FETCHING':
         return { ...initialState, status: 'fetching' };
@@ -29,7 +29,7 @@ export const useFetch = (url: string) => {
       case 'FETCH_ERROR':
         return { ...initialState, status: 'error', error: action.payload };
       default:
-        return state;
+        return fetchState;
     }
   }, initialState);
 
