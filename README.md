@@ -9,6 +9,13 @@ You will need backend server to be up and running to start this project. Once yo
 To get the latest changes from backend submodule. Make sure you are in the backend directory.
 #### `cd backend`
 #### `git fetch`
+#### `git merge origin/main`
+
+For running backend in auto refresh mode
+#### `npm run dev`
+else 
+#### `npm start`
+
 
 ## Available Scripts
 #### `yarn start`
