@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import {UserList} from "./components/UserList";
+import {Search} from "./components/Search/Search";
 
 
 function App() {
-  return (
-    <UserList/>
-  );
+    return (
+        <>
+            <Search/>
+        </>
+    );
 }
 
 export default App;
