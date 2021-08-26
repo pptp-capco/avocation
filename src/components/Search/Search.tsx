@@ -16,8 +16,9 @@ export function Search() {
                 color="primary"
                 onClick={() => {
                     setSearchString(textBoxRef.current.value)
-                    console.log(textBoxRef.current.value, 'hello', searchString)
-                    if (searchString !== textBoxRef.current.value)
+                    console.log(textBoxRef.current.value)
+                    const stringValue = textBoxRef.current.value.trim();
+                    if (searchString !== stringValue && stringValue.length > 0)
                         setShowTable(true)
                 }}
         >
@@ -25,7 +26,7 @@ export function Search() {
         </Button>
 
 
-        {showTable && <Enquiries searchString={textBoxRef.current.value}/>}
+        {showTable && <Enquiries searchString={textBoxRef.current.value.trim()}/>}
 
 
     </div>;
