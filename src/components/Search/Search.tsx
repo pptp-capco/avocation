@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
     Button,
-    TextField
 } from "@material-ui/core";
 import {Enquiries} from "../Enquiries";
 import './search.css'
@@ -9,25 +8,24 @@ import './search.css'
 export function Search() {
     const [searchString, setSearchString] = useState('');
     const [showTable, setShowTable] = useState(false);
+    const textBoxRef: any = useRef()
 
     return <div className="container">
-        <TextField id="outlined-basic"
-                   label="Outlined"
-                   variant="outlined"
-                   value={searchString}
-                   onChange={(event: any) => {
-                       setSearchString(event.target.value)
-                   }}
-        />
+        <input type="text" ref={textBoxRef}/>
         <Button variant="contained"
                 color="primary"
-                onClick={() => setShowTable(true)}
+                onClick={() => {
+                    setSearchString(textBoxRef.current.value)
+                    console.log(textBoxRef.current.value, 'hello', searchString)
+                    if (searchString !== textBoxRef.current.value)
+                        setShowTable(true)
+                }}
         >
             Search
         </Button>
 
 
-        { showTable && <Enquiries searchString={searchString}/> }
+        {showTable && <Enquiries searchString={textBoxRef.current.value}/>}
 
 
     </div>;

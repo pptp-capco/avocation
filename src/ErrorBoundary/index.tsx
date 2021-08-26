@@ -8,7 +8,6 @@ type State = {
 export class ErrorBoundary extends React.Component<{}, State> {
   constructor(props: State) {
     super(props);
-    console.log('the state is ', this.state);
     this.state = {hasError: false};
   }
 

@@ -13,12 +13,10 @@ import {LoadingIndicator} from "./LoadingIndicator";
 import {ApiError} from "./ApiError";
 
 type Props = {
-    searchString: string;
+    searchString: any;
 }
 
 export function Enquiries({searchString}: Props) {
-
-    console.log("render")
     const api = process.env.REACT_APP_API_SERVER;
     const url = `${api}/${searchString}`
     const {
@@ -36,7 +34,6 @@ export function Enquiries({searchString}: Props) {
     }
 
     if (data && Array.isArray(data) && data.length > 0) {
-        console.log(data)
 
         return <div>
 
