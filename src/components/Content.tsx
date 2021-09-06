@@ -6,8 +6,16 @@ import {
 } from "@material-ui/core";
 import {ContentDetails} from "./ContentDetails";
 
+type EnquiryType = {
+    customerId: string;
+    accountName: string;
+    accountNumber: string;
+    messageContent: string;
+    swiftReft: string;
+}
+
 type Props = {
-    data: any;
+    data: EnquiryType[];
 }
 
 export function Content({data}: Props) {
@@ -20,7 +28,7 @@ export function Content({data}: Props) {
         }
     }
     return <TableBody>
-        {data.map(({customerId, accountName, accountNumber, messageContent, swiftReft}: any) => (
+        {data.map(({customerId, accountName, accountNumber, messageContent, swiftReft}: EnquiryType) => (
             <>
                 <TableRow key={accountName}>
                     <TableCell style={{color: 'blue', cursor: 'pointer'}} component="th" scope="row"
