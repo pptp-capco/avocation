@@ -23,7 +23,8 @@ export function Content({data}: Props) {
         {data.map(({customerId, accountName, accountNumber, messageContent, swiftReft}: any) => (
             <>
                 <TableRow key={accountName}>
-                    <TableCell style={{color: 'blue', cursor: 'pointer'}} component="th" scope="row" onClick={() => fetchData(customerId)}>
+                    <TableCell style={{color: 'blue', cursor: 'pointer'}} component="th" scope="row"
+                               onClick={() => fetchData(customerId)}>
                         {customerId}
                     </TableCell>
                     <TableCell align="right">{swiftReft}</TableCell>
@@ -31,11 +32,9 @@ export function Content({data}: Props) {
                     <TableCell align="right">{accountName}</TableCell>
                     <TableCell align="right">{messageContent}</TableCell>
                 </TableRow>
-                <>
-                    {expand && customerId === selectedCustomer ?
-                        <ContentDetails url={`${customerId}`}/> : null
-                    }
-                </>
+                {expand && customerId === selectedCustomer ?
+                    <ContentDetails customerId={customerId}/> : null
+                }
             </>
         ))}
     </TableBody>

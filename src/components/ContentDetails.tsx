@@ -1,13 +1,11 @@
 import React from 'react';
 import {TableCell, TableRow} from "@material-ui/core";
-import {LoadingIndicator} from "./LoadingIndicator";
-import {ApiError} from "./ApiError";
 import {useFetch} from "../hooks/useFetch";
 
-export function ContentDetails({url}: { url: string }) {
+export function ContentDetails({customerId}: { customerId: string }) {
 
     const api = process.env.REACT_APP_API_SERVER;
-    const urlLink = `${api}/enquiries/${url}`
+    const urlLink = `${api}/enquiries/${customerId}`
     type DataType = {
         messageContent: string;
     }
@@ -22,15 +20,19 @@ export function ContentDetails({url}: { url: string }) {
 
 
     if (error) {
-        return <ApiError/>
+        return <TableRow>
+            <TableCell align="right">{'Sorry, something went wrong!'}</TableCell>
+        </TableRow>
     }
 
     if (status === 'fetching') {
-        return <LoadingIndicator/>
+        return <TableRow>
+            <TableCell align="right">{'Loading...'}</TableCell>
+        </TableRow>
     }
 
     if (data) {
-        return <TableRow>
+        return <TableRow key={customerId}>
             <TableCell align="right">{data?.messageContent!}</TableCell>
         </TableRow>
     }
