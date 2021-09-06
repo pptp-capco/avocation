@@ -16,7 +16,6 @@ export function Search() {
                 color="primary"
                 onClick={() => {
                     setSearchString(textBoxRef.current.value)
-                    console.log(textBoxRef.current.value)
                     const stringValue = textBoxRef.current.value.trim();
                     if (searchString !== stringValue && stringValue.length > 0)
                         setShowTable(true)
