@@ -13,7 +13,7 @@ type Props = {
 export function Content({data}: Props) {
     const [expand, setExpand] = useState(false);
     const [selectedCustomer, setSelectedCustomer] = useState('');
-    const fetchData = async (customerId: string) => {
+    const showContentDetails = (customerId: string) => {
         setExpand((expand) => !expand)
         if (!expand) {
             setSelectedCustomer(customerId)
@@ -24,7 +24,7 @@ export function Content({data}: Props) {
             <>
                 <TableRow key={accountName}>
                     <TableCell style={{color: 'blue', cursor: 'pointer'}} component="th" scope="row"
-                               onClick={() => fetchData(customerId)}>
+                               onClick={() => showContentDetails(customerId)}>
                         {customerId}
                     </TableCell>
                     <TableCell align="right">{swiftReft}</TableCell>
