@@ -1,6 +1,6 @@
 import { useEffect, useRef, useReducer } from 'react';
 
-export const useFetch = (url: string) => {
+export const useFetch = (url: string, options?: {}) => {
   const cache = useRef({} as any);
 
   type State = {
@@ -44,7 +44,7 @@ export const useFetch = (url: string) => {
         dispatch({ type: 'FETCHED', payload: data });
       } else {
         try {
-          const response = await fetch(url);
+          const response = await fetch(url, options);
           const data = await response.json();
           cache.current[url] = data;
           if (cancelRequest) return;

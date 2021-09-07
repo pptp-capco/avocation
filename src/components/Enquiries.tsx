@@ -23,7 +23,12 @@ export function Enquiries({searchString}: Props) {
         data,
         error,
         status
-    } = useFetch(url)
+    } = useFetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({searchString}),
+        }
+    )
 
     if (error) {
         return <ApiError/>
@@ -36,19 +41,19 @@ export function Enquiries({searchString}: Props) {
     if (data && Array.isArray(data) && data.length > 0) {
 
         return <TableContainer component={Paper}>
-                <Table aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Customer ID</TableCell>
-                            <TableCell align="right">Swift Reft</TableCell>
-                            <TableCell align="right">Account No</TableCell>
-                            <TableCell align="right">Account Name</TableCell>
-                            <TableCell align="right">Message</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <Content data={data} />
-                </Table>
-            </TableContainer>
+            <Table aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Customer ID</TableCell>
+                        <TableCell align="right">Swift Reft</TableCell>
+                        <TableCell align="right">Account No</TableCell>
+                        <TableCell align="right">Account Name</TableCell>
+                        <TableCell align="right">Message</TableCell>
+                    </TableRow>
+                </TableHead>
+                <Content data={data}/>
+            </Table>
+        </TableContainer>
     }
 
     return null;
