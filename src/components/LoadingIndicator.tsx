@@ -1,3 +1,7 @@
+import {CircularProgress} from "@material-ui/core";
+import React from "react";
+
 export function LoadingIndicator() {
-  return <div>{`Loading...`}</div>;
+  return <><CircularProgress />{'Loading...'}</>
+
 }

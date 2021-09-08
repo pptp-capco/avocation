@@ -27,10 +27,10 @@ export function Content({data}: Props) {
             setSelectedCustomer(customerId)
         }
     }
-    return <TableBody>
+    return <>
         {data.map(({customerId, accountName, accountNumber, messageContent, swiftReft}: EnquiryType) => (
-            <>
-                <TableRow key={accountName}>
+            <TableBody key={accountName}>
+                <TableRow>
                     <TableCell style={{color: 'blue', cursor: 'pointer'}} component="th" scope="row"
                                onClick={() => showContentDetails(customerId)}>
                         {customerId}
@@ -43,7 +43,7 @@ export function Content({data}: Props) {
                 {expand && customerId === selectedCustomer ?
                     <ContentDetails customerId={customerId}/> : null
                 }
-            </>
+            </TableBody>
         ))}
-    </TableBody>
+    </>
 }

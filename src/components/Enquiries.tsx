@@ -25,7 +25,7 @@ export function Enquiries({searchString}: Props) {
         status
     } = useFetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({searchString}),
         }
     )
@@ -35,7 +35,9 @@ export function Enquiries({searchString}: Props) {
     }
 
     if (status === 'fetching') {
-        return <LoadingIndicator/>
+        return <div>
+            <LoadingIndicator/>
+        </div>
     }
 
     if (data && Array.isArray(data) && data.length > 0) {

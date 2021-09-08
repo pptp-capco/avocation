@@ -1,5 +1,5 @@
 import React from 'react';
-import {TableCell, TableRow} from "@material-ui/core";
+import {CircularProgress, TableCell, TableRow} from "@material-ui/core";
 import {useFetch} from "../hooks/useFetch";
 
 export function ContentDetails({customerId}: { customerId: string }) {
@@ -27,7 +27,9 @@ export function ContentDetails({customerId}: { customerId: string }) {
 
     if (status === 'fetching') {
         return <TableRow>
-            <TableCell align="right">{'Loading...'}</TableCell>
+            <TableCell align="right">
+                <CircularProgress/>{'Loading...'}
+            </TableCell>
         </TableRow>
     }
 
