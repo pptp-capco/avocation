@@ -34,7 +34,7 @@ export const useFetch = (url: string, options?: {}) => {
   }, initialState);
 
   useEffect(() => {
-    let cancelRequest = false;
+    let cancelRequest  = false;
     if (!url) return;
 
     const fetchData = async () => {
