@@ -26,6 +26,8 @@ export const useFetch = (url: string, options?: {}) => {
         return { ...initialState, status: 'fetching' };
       case 'FETCHED':
         return { ...initialState, status: 'fetched', data: action.payload };
+      case 'CREATED':
+        return { ...initialState, status: 'created'};
       case 'FETCH_ERROR':
         return { ...initialState, status: 'error', error: action.payload };
       default:
@@ -45,6 +47,10 @@ export const useFetch = (url: string, options?: {}) => {
       } else {
         try {
           const response = await fetch(url, options);
+          if (response.status === 201) {
+            dispatch({ type: 'CREATED', payload: {} });
+            return;
+          }
           const data = await response.json();
           cache.current[url] = data;
           if (cancelRequest) return;
